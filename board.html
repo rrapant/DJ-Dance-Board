@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dance Board</title>
+</head>
+<body>
+    <div id="lister">
+    </div>
+</body>
+<script>
+    require('electron').ipcRenderer.on('render', (event, message) => {
+        console.log(`Req to render: ${JSON.stringify(message.dances)}`);
+        render(message.dances);
+    });
+
+    function render(dances){
+        let lister = document.getElementById('lister');
+        while (lister.firstChild) {
+            lister.removeChild(lister.firstChild);
+        }
+        for (let i = 0, div; i < dances.length; i++){
+            div = document.createElement('div');
+            div.appendChild(document.createTextNode(dances[i]));
+            div.setAttribute('class', 'dance');
+            lister.appendChild(div);
+        }
+        lister.firstChild.setAttribute('class', 'currentDance');
+    }
+</script>
+<style>
+    body {
+        background: #000;
+        color: deepskyblue;
+    }
+
+    #lister {
+        padding: 70px;
+        text-align: center
+    }
+
+    #lister div {
+        display: inline-block;
+        width: 100%;
+        margin: 10px
+    }
+
+    .currentDance {
+        font-size: 200px;
+        margin: auto
+    }
+
+    .dance {
+        font-size: 150px;
+    }
+</style>
+</html>

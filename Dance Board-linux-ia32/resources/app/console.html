@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Console</title>
+</head>
+<body>
+<div id="selections">
+    <button onclick="add('A. Rumba')">A. Rumba</button>
+    <button onclick="add('Bachata')">Bachata</button>
+    <button onclick="add('Bolero')">Bolero</button>
+    <button onclick="add('Cha Cha')">Cha Cha</button>
+    <button onclick="add('EC Swing')">EC Swing</button>
+    <button onclick="add('Foxtrot')">Foxtrot</button>
+    <button onclick="add('Hustle')">Hustle</button>
+    <button onclick="add('I. Rumba')">I. Rumba</button>
+    <button onclick="add('Jive')">Jive</button>
+    <button onclick="add('NC 2-step')">NC 2-step</button>
+    <button onclick="add('Quickstep')">Quickstep</button>
+    <button onclick="add('Salsa')">Salsa</button>
+    <button onclick="add('Samba')">Samba</button>
+    <button onclick="add('Tango')">Tango</button>
+    <button onclick="add('V. Waltz')">V. Waltz</button>
+    <button onclick="add('Waltz')">Waltz</button>
+    <button onclick="add('WC Swing')">WC Swing</button>
+</div>
+<div id="lister">
+</div>
+<button onclick="render()">Render</button>
+</body>
+<script>
+    var dances = [];
+
+    function add(dance) {
+        let lister = document.getElementById('lister');
+        console.log(`Adding ${dance}`);
+        dances.push(dance);
+        if (dances.length > 4) {
+            dances.shift();
+        }
+        while (lister.firstChild) {
+            lister.removeChild(lister.firstChild);
+        }
+        for (let i = 0, div; i < dances.length; i++) {
+            div = document.createElement('div');
+            div.appendChild(document.createTextNode(dances[i]));
+            lister.appendChild(div);
+        }
+    }
+
+    function render() {
+        console.log(`rendering ${dances}`);
+        require('electron').ipcRenderer.send('render', {dances: dances});
+    }
+</script>
+<style>
+    #lister {
+        padding: 50px;
+        text-align: center
+    }
+
+    #lister div {
+        display: inline-block;
+        width: 100%;
+        font-size: 50px
+    }
+
+</style>
+</html>

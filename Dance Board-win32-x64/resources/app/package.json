@@ -1,0 +1,14 @@
+{
+  "name": "danceboard",
+  "version": "1.0.0",
+  "productName": "Dance Board",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron .",
+    "package": "electron-packager . --all --version 1.2.2 --overwrite"
+  },
+  "author": "",
+  "license": "ISC"
+}
