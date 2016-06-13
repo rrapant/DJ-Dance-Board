@@ -13,3 +13,6 @@ and render them on the board.  The console can be manipulated/reloaded without i
   * Download and double click on *Dance Board.app* build for your architecture.
   * Move the *board* window to the external display and make it full screen. Tweak css as necessary.
   * Select the dances to display on the *console* window and hit *render*.
+  
+## License
+[This is free and unencumbered software released into the public domain](./LICENSE "The Unlicense").
