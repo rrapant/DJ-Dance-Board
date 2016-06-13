@@ -15,4 +15,4 @@ and render them on the board.  The console can be manipulated/reloaded without i
   * Select the dances to display on the *console* window and hit *render*.
   
 ## License
-[This is free and unencumbered software released into the public domain](./LICENSE "The Unlicense").
+&copy; 2016 DokoStudios under the [Unlicense](./LICENSE "The Unlicense").
